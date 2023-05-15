@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="/convert" class="form" method="POST">
+            <div class="title">timezone converter</div>
+            <label for="time">Select a time</label><br />
+            <input type="time" id="time" name="time" required>
+
+            <label for="zones">Choose a timezone</label>
+            <div class="zoneContainer">
+                <div class="fromText">From</div>
+                <select name="zoneFrom" id="zones" required>
+                    <% for(z of zones) { %>
+                        <option value="<%= z %>"><%= z %></option>
+                    <% } %>
+                </select>
+                <div class="toText">To</div>
+                <select name="zoneTo" id="zones" required>
+                    <% for(z of zones) { %>
+                        <option value="<%= z %>"><%= z %></option>
+                    <% } %>
+                </select>
+            </div>
+            <input type="submit" value="convert">
+        </form>
+
+        <% if(zoneTo && zoneFrom && addedTime && convertedTime) { %>
+            <div class="result">
+
+                <div class="resultContainer">
+                    <div class="date"><%= zoneFrom %></div>
+                    <div class="time">
+                        <%= addedTime %>
+                    </div>
+                </div>
+                <svg stroke="rgb(137, 44, 107)" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                    stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="8 12 12 16 16 12"></polyline>
+                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                </svg>
+                <div class="resultContainer">
+                    <div class="date">
+                        <%= zoneTo %>
+                    </div>
+                    <div class="time">
+                        <%= convertedTime %>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>
+</body>
+
+</html>
