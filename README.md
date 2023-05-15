@@ -1,4 +1,4 @@
-# practical_2
+# practical_1
 
 ## 📝 Table of Contents
 
